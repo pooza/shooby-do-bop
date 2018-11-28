@@ -1,5 +1,3 @@
-require 'optparse'
-
 module ShoobyDoBop
   class Standalone
     def initialize
@@ -20,12 +18,14 @@ module ShoobyDoBop
     end
 
     def body
-      return [
+      body = [
         Time.now.strftime('%Y/%m/%d %H:%M'),
         video_uri.to_s,
-        "現在の再生回数は、 #{video_uri.count.jpy_comma}回",
-        "(あと #{video_uri.remining.jpy_comma}回)",
-      ].push(@config['/hashtags'].map{ |word| Mastodon.create_tag(word)}.join(' ')).join("\n")
+        "現在の再生回数は #{video_uri.count.jpy_comma}回",
+      ]
+      body.push("(あと #{video_uri.remining.jpy_comma}回)") if video_uri.remining.positive?
+      body.push(@config['/hashtags'].map{ |word| Mastodon.create_tag(word)}.join(' '))
+      return body.join("\n")
     end
 
     def video_uri
