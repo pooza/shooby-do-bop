@@ -16,9 +16,9 @@ module ShoobyDoBop
       @logger.info({message: 'complete', version: Package.version})
     end
 
-    def movie_uri
-      @movie_uri ||= MovieURI.parse(@config['/movie/url'])
-      return @movie_uri
+    def video_uri
+      @video_uri ||= VideoURI.parse(@config['/video/url'])
+      return @video_uri
     end
   end
 end

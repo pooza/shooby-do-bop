@@ -20,5 +20,5 @@ module ShoobyDoBop
     autoload :ImprementError
   end
 
-  autoload :MovieURI, 'shooby_do_bop/uri/movie_uri'
+  autoload :VideoURI, 'shooby_do_bop/uri/video_uri'
 end

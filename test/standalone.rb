@@ -4,9 +4,9 @@ module ShoobyDoBop
       @app = Standalone.new
     end
 
-    def test_movie_uri
-      url = @app.movie_uri
-      assert_true(url.is_a?(MovieURI))
+    def test_video_uri
+      url = @app.video_uri
+      assert_true(url.is_a?(VideoURI))
       assert_true(url.absolute?)
     end
   end
