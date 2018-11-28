@@ -41,5 +41,15 @@ module ShoobyDoBop
       return nil unless data
       return data['statistics']['viewCount'].to_i
     end
+
+    def statistics
+      return {
+        date: Time.now,
+        title: title,
+        count: count,
+        goal: @config['/goal'],
+        remaining: @config['/goal'] - count,
+      }
+    end
   end
 end

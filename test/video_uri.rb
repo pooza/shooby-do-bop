@@ -10,10 +10,17 @@ module ShoobyDoBop
 
     def test_data
       assert_true(@uri.data.is_a?(Hash))
+      assert_true(@uri.data.present?)
     end
 
     def test_count
       assert_true(@uri.count.is_a?(Integer))
+      assert_true(@uri.count.present?)
+    end
+
+    def test_title
+      assert_true(@uri.title.is_a?(String))
+      assert_true(@uri.title.present?)
     end
   end
 end
