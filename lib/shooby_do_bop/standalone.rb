@@ -1,5 +1,4 @@
 require 'optparse'
-require 'addressable/uri'
 
 module ShoobyDoBop
   class Standalone
@@ -16,8 +15,10 @@ module ShoobyDoBop
     ensure
       @logger.info({message: 'complete', version: Package.version})
     end
-    def movie_url
-      @movie_url ||= Addressable::URI.parse(@config['/movie/url'])
+
+    def movie_uri
+      @movie_uri ||= MovieURI.parse(@config['/movie/url'])
+      return @movie_uri
     end
   end
 end

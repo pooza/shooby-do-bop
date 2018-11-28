@@ -19,4 +19,6 @@ module ShoobyDoBop
     autoload :ExternalServiceError
     autoload :ImprementError
   end
+
+  autoload :MovieURI, 'shooby_do_bop/uri/movie_uri'
 end
