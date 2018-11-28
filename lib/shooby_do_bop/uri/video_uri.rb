@@ -42,15 +42,12 @@ module ShoobyDoBop
       return data['statistics']['viewCount'].to_i
     end
 
-    def statistics
-      return {
-        date: Time.now,
-        url: to_s,
-        title: title,
-        count: count,
-        goal: @config['/goal'],
-        remaining: @config['/goal'] - count,
-      }
+    def goal
+      return @config['/goal'].to_i
+    end
+
+    def remining
+      return goal - count
     end
   end
 end
