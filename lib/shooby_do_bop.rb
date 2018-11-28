@@ -6,6 +6,7 @@ module ShoobyDoBop
   extend ActiveSupport::Autoload
 
   autoload :Config
+  autoload :Environment
   autoload :Error
   autoload :Logger
   autoload :Mastodon
