@@ -4,14 +4,16 @@ require 'json'
 
 module ShoobyDoBop
   class Mastodon
-    def initialize(params)
+    def initialize(params = nil)
+      @config = Config.instance
+      params ||= {'url' => @config['/mastodon/url'], 'token' => @config['/mastodon/token']}
       @params = params.clone
     end
 
     def toot(text, options = {})
       values = options.clone
       values[:status] = text
-      return HTTParty.post(create_uri('/api/v1/statuses'), {
+      return HTTParty.post(create_uri, {
         body: values.to_json,
         headers: {
           'Content-Type' => 'application/json',
@@ -23,7 +25,7 @@ module ShoobyDoBop
       })
     end
 
-    def create_uri(href)
+    def create_uri(href = '/api/v1/statuses')
       uri = Addressable::URI.parse(@params['url'])
       uri.path = href
       return uri

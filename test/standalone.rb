@@ -5,9 +5,13 @@ module ShoobyDoBop
     end
 
     def test_video_uri
-      url = @app.video_uri
-      assert_true(url.is_a?(VideoURI))
-      assert_true(url.absolute?)
+      uri = @app.video_uri
+      assert_true(uri.is_a?(VideoURI))
+      assert_true(uri.absolute?)
+    end
+
+    def test_body
+      assert_true(@app.body.present?)
     end
   end
 end

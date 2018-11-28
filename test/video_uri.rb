@@ -13,14 +13,23 @@ module ShoobyDoBop
       assert_true(@uri.data.present?)
     end
 
+    def test_title
+      assert_true(@uri.title.is_a?(String))
+      assert_true(@uri.title.present?)
+    end
+
     def test_count
       assert_true(@uri.count.is_a?(Integer))
       assert_true(@uri.count.present?)
     end
 
-    def test_title
-      assert_true(@uri.title.is_a?(String))
-      assert_true(@uri.title.present?)
+    def test_goal
+      assert_true(@uri.goal.is_a?(Integer))
+      assert_true(@uri.goal.present?)
+    end
+
+    def test_remining
+      assert_true(@uri.remining.is_a?(Integer))
     end
   end
 end
