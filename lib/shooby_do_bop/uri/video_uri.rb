@@ -45,6 +45,7 @@ module ShoobyDoBop
     def statistics
       return {
         date: Time.now,
+        url: to_s,
         title: title,
         count: count,
         goal: @config['/goal'],

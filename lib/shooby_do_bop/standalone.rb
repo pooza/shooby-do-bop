@@ -12,8 +12,7 @@ module ShoobyDoBop
 
     def execute
       @logger.info({message: 'start', version: Package.version})
-      uri = video_uri.clone
-      pp uri.statistics
+      pp video_uri.statistics
     ensure
       @logger.info({message: 'complete', version: Package.version})
     end
