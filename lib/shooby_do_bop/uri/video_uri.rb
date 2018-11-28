@@ -18,22 +18,28 @@ module ShoobyDoBop
       unless @data
         uri = Addressable::URI.parse(@config['/youtube/urls/videos'])
         uri.query_values = {
-          'part' => 'statistics',
+          'part' => 'snippet,statistics',
           'key' => @config['/google/api/key'],
           'id' => id,
         }
-        @data = HTTParty.get(uri, {
+        result = HTTParty.get(uri, {
           headers: {
             'User-Agent' => Package.user_agent,
           },
         }).to_h
+        @data = result['items'].first if result['items'].present?
       end
       return @data
     end
 
+    def title
+      return nil unless data
+      return data['snippet']['title']
+    end
+
     def count
-      return nil unless item = data['items'].first
-      return item['statistics']['viewCount'].to_i
+      return nil unless data
+      return data['statistics']['viewCount'].to_i
     end
   end
 end
