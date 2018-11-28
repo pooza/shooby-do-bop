@@ -1,5 +1,3 @@
-require 'optparse'
-
 module ShoobyDoBop
   class Standalone
     def initialize

@@ -1,6 +1,9 @@
 package:
-  version: 1.0.0
+  version: 1.0.1
   url: https://github.com/pooza/shooby-do-bop
 youtube:
   urls:
     videos: https://www.googleapis.com/youtube/v3/videos
+hashtags: []
+slack:
+  hooks: []
