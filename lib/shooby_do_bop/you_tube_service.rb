@@ -13,12 +13,14 @@ module ShoobyDoBop
         'key' => api_key,
         'id' => id,
       }
-      result = HTTParty.get(uri, {
+      response = HTTParty.get(uri, {
         headers: {
           'User-Agent' => Package.user_agent,
         },
+        ssl_ca_file: ENV['SSL_CERT_FILE'],
       }).to_h
-      return result['items'].first if result['items'].present?
+      return nil unless response['items'].present?
+      return response['items'].first
     rescue => e
       raise ExternalServiceError, "動画#{id}の情報が取得できません。(#{e.message})"
     end
