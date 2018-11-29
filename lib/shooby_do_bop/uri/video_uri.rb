@@ -1,11 +1,11 @@
 require 'addressable/uri'
-require 'httparty'
 
 module ShoobyDoBop
   class VideoURI < Addressable::URI
     def initialize(options = {})
       super(options)
       @config = Config.instance
+      @service = YouTubeService.new
     end
 
     def id
@@ -15,20 +15,7 @@ module ShoobyDoBop
     end
 
     def data
-      unless @data
-        uri = Addressable::URI.parse(@config['/youtube/urls/videos'])
-        uri.query_values = {
-          'part' => 'snippet,statistics',
-          'key' => @config['/google/api/key'],
-          'id' => id,
-        }
-        result = HTTParty.get(uri, {
-          headers: {
-            'User-Agent' => Package.user_agent,
-          },
-        }).to_h
-        @data = result['items'].first if result['items'].present?
-      end
+      @data ||= @service.lookup_video(id)
       return @data
     end
 
