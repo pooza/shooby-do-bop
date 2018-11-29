@@ -13,6 +13,7 @@ module ShoobyDoBop
   autoload :Package
   autoload :Slack
   autoload :Standalone
+  autoload :YouTubeService
 
   autoload_under 'error' do
     autoload :ConfigError
