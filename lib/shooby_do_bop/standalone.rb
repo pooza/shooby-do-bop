@@ -21,9 +21,13 @@ module ShoobyDoBop
       body = [
         Time.now.strftime('%Y/%m/%d %H:%M'),
         video_uri.to_s,
-        "現在の再生回数は #{video_uri.count.jpy_comma}回",
+        "現在の再生回数は#{video_uri.count.jpy_comma}回",
       ]
-      body.push("(あと #{video_uri.remining.jpy_comma}回)") if video_uri.remining.positive?
+      if video_uri.remining.positive?
+        body.push("(あと#{video_uri.remining.jpy_comma}回)")
+      else
+        body.push("(#再生回数#{video_uri.goal.jpy_comma}回を達成済み)")
+      end
       body.push(@config['/hashtags'].map{ |word| Mastodon.create_tag(word)}.join(' '))
       return body.join("\n")
     end
