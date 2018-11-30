@@ -26,7 +26,7 @@ module ShoobyDoBop
       if video_uri.remining.positive?
         body.push("(あと#{video_uri.remining.jpy_comma}回)")
       else
-        body.push("(#再生回数#{video_uri.goal.jpy_comma}回を達成済み)")
+        body.push("(再生回数#{video_uri.goal.jpy_comma}回を達成済み)")
       end
       body.push(@config['/hashtags'].map{ |word| Mastodon.create_tag(word)}.join(' '))
       return body.join("\n")
