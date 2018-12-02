@@ -42,7 +42,7 @@ GEM
       unicode-display_width (~> 1.4.0)
     ruby-progressbar (1.10.0)
     syslog-logger (1.6.8)
-    test-unit (3.2.8)
+    test-unit (3.2.9)
       power_assert
     thread_safe (0.3.6)
     tzinfo (1.2.5)
