@@ -15,7 +15,6 @@ module ShoobyDoBop
           'Content-Type' => 'application/json',
           'User-Agent' => Package.user_agent,
         },
-        ssl_ca_file: ENV['SSL_CERT_FILE'],
       })
     end
 

@@ -14,10 +14,7 @@ module ShoobyDoBop
         'id' => id,
       }
       response = HTTParty.get(uri, {
-        headers: {
-          'User-Agent' => Package.user_agent,
-        },
-        ssl_ca_file: ENV['SSL_CERT_FILE'],
+        headers: {'User-Agent' => Package.user_agent},
       }).to_h
       return nil unless response['items'].present?
       return response['items'].first

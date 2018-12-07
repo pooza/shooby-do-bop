@@ -21,7 +21,6 @@ module ShoobyDoBop
           'Authorization' => "Bearer #{@params['token']}",
           'X-Mulukhiya' => Package.full_name,
         },
-        ssl_ca_file: ENV['SSL_CERT_FILE'],
       })
     end
 
