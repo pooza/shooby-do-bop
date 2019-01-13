@@ -11,6 +11,9 @@ Style/FrozenStringLiteralComment:
 Style/DoubleNegation:
   Enabled: false
 
+Style/FormatStringToken:
+  EnforcedStyle: template
+
 Layout/IndentHash:
   EnforcedStyle: consistent
 
@@ -119,4 +122,3 @@ Metrics/CyclomaticComplexity:
 
 Metrics/PerceivedComplexity:
   Max: 10
-
