@@ -1,5 +1,21 @@
 module ShoobyDoBop
   module Package
+    def environment_class
+      return 'ShoobyDoBop::Environment'
+    end
+
+    def package_class
+      return 'ShoobyDoBop::Package'
+    end
+
+    def config_class
+      return 'ShoobyDoBop::Config'
+    end
+
+    def logger_class
+      return 'ShoobyDoBop::Logger'
+    end
+
     def self.name
       return 'shooby-do-bop'
     end

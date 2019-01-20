@@ -14,15 +14,12 @@ module ShoobyDoBop
         'id' => id,
       }
       response = HTTParty.get(uri, {
-        headers: {
-          'User-Agent' => Package.user_agent,
-        },
-        ssl_ca_file: ENV['SSL_CERT_FILE'],
+        headers: {'User-Agent' => Package.user_agent},
       }).to_h
       return nil unless response['items'].present?
       return response['items'].first
     rescue => e
-      raise ExternalServiceError, "動画#{id}の情報が取得できません。(#{e.message})"
+      raise Ginseng::GatewayError, "動画#{id}の情報が取得できません。(#{e.message})"
     end
 
     def create_uri(type)
