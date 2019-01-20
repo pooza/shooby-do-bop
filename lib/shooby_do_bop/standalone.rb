@@ -7,11 +7,11 @@ module ShoobyDoBop
 
     def execute
       @logger.info({message: 'start', version: Package.version})
-      response = Mastodon.new.toot(body)
-      raise ExternalServiceError, "status: #{r.code}" if 400 <= response.code
+      response = Mastodon.new(@config['/mastodon/url'], @config['/mastodon/token']).toot(body)
+      raise Ginseng::GatewayError, "status: #{r.code}" if 400 <= response.code
       @logger.info({message: 'complete', version: Package.version})
     rescue => e
-      e = Error.create(e)
+      e = Ginseng::Error.create(e)
       Slack.broadcast(e.to_h)
       @logger.error({class: e.class, message: e.message, version: Package.version})
       exit 1
