@@ -52,9 +52,7 @@ module ShoobyDoBop
     end
 
     def self.crawl_all
-      all do |crawler|
-        crawler.crawl
-      end
+      all(&:crawl)
     end
 
     def self.all
