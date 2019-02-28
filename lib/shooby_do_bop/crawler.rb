@@ -18,18 +18,10 @@ module ShoobyDoBop
     end
 
     def body
-      body = [
-        Time.now.strftime('%Y/%m/%d %H:%M'),
-        video_uri.to_s,
-        "現在の再生回数は#{video_uri.count.jpy_comma}回",
-      ]
-      if video_uri.remining.positive?
-        body.push("(あと#{video_uri.remining.jpy_comma}回)")
-      else
-        body.push("(再生回数#{video_uri.goal.jpy_comma}回を達成済み)")
-      end
-      body.push(@config['/hashtags'].map{|word| Mastodon.create_tag(word)}.join(' '))
-      return body.join("\n")
+      template = Template.new('toot')
+      template[:video_uri] = video_uri
+      template[:tags] = @config['/hashtags']
+      return template.to_s
     end
 
     def video_uri
@@ -41,7 +33,7 @@ end
 
 # https://qiita.com/acairojuni/items/1055c2f27cbd99e67fc2
 class Integer
-  def jpy_comma
+  def commaize
     return to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,')
   end
 end

@@ -13,6 +13,7 @@ module ShoobyDoBop
   autoload :Mastodon
   autoload :Package
   autoload :Slack
+  autoload :Template
   autoload :YouTubeService
 
   autoload_under 'uri' do
