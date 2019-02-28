@@ -1,17 +1,17 @@
 module ShoobyDoBop
-  class StandaloneTest < Test::Unit::TestCase
+  class CrawlerTest < Test::Unit::TestCase
     def setup
-      @app = Standalone.new
+      @crawler = Crawler.new
     end
 
     def test_video_uri
-      uri = @app.video_uri
+      uri = @crawler.video_uri
       assert_true(uri.is_a?(VideoURI))
       assert_true(uri.absolute?)
     end
 
     def test_body
-      assert_true(@app.body.present?)
+      assert_true(@crawler.body.present?)
     end
   end
 end

@@ -7,12 +7,12 @@ module ShoobyDoBop
   extend ActiveSupport::Autoload
 
   autoload :Config
+  autoload :Crawler
   autoload :Environment
   autoload :Logger
   autoload :Mastodon
   autoload :Package
   autoload :Slack
-  autoload :Standalone
   autoload :YouTubeService
 
   autoload_under 'uri' do

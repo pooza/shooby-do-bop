@@ -1,7 +1,7 @@
 module ShoobyDoBop
   class VideoURITest < Test::Unit::TestCase
     def setup
-      @uri = Standalone.new.video_uri
+      @uri = Crawler.new.video_uri
     end
 
     def test_id

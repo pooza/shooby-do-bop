@@ -1,11 +1,11 @@
 module ShoobyDoBop
-  class Standalone
+  class Crawler
     def initialize
       @config = Config.instance
       @logger = Logger.new
     end
 
-    def execute
+    def crawl
       @logger.info({message: 'start', version: Package.version})
       response = Mastodon.new(@config['/mastodon/url'], @config['/mastodon/token']).toot(body)
       raise Ginseng::GatewayError, "status: #{r.code}" if 400 <= response.code
@@ -28,7 +28,7 @@ module ShoobyDoBop
       else
         body.push("(再生回数#{video_uri.goal.jpy_comma}回を達成済み)")
       end
-      body.push(@config['/hashtags'].map{ |word| Mastodon.create_tag(word)}.join(' '))
+      body.push(@config['/hashtags'].map{|word| Mastodon.create_tag(word)}.join(' '))
       return body.join("\n")
     end
 
