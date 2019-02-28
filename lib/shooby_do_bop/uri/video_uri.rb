@@ -28,13 +28,5 @@ module ShoobyDoBop
       return nil unless data
       return data['statistics']['viewCount'].to_i
     end
-
-    def goal
-      return @config['/goal'].to_i
-    end
-
-    def remining
-      return goal - count
-    end
   end
 end

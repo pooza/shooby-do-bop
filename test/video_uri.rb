@@ -1,7 +1,7 @@
 module ShoobyDoBop
   class VideoURITest < Test::Unit::TestCase
     def setup
-      @uri = Standalone.new.video_uri
+      @uri = Crawler.all.first.video_uri
     end
 
     def test_id
@@ -21,15 +21,6 @@ module ShoobyDoBop
     def test_count
       assert_true(@uri.count.is_a?(Integer))
       assert_true(@uri.count.present?)
-    end
-
-    def test_goal
-      assert_true(@uri.goal.is_a?(Integer))
-      assert_true(@uri.goal.present?)
-    end
-
-    def test_remining
-      assert_true(@uri.remining.is_a?(Integer))
     end
   end
 end

@@ -1,0 +1,10 @@
+<%# encoding: UTF-8 -%>
+<%= Time.now.strftime('%Y/%m/%d %H:%M') %>
+<%= @params[:crawler].video_uri.to_s %>
+現在の再生回数は<%= @params[:crawler].count.commaize %>回
+<% if @params[:crawler].remining.positive? -%>
+(あと<%= @params[:crawler].remining.commaize %>回)
+<% else -%>
+(再生回数<%= @params[:crawler].goal.commaize %>回を達成済み)
+<% end -%>
+<%= @params[:crawler].tags.map{|word| Mastodon.create_tag(word)}.join(' ') %>
