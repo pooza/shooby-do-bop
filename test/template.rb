@@ -1,16 +1,16 @@
 module ShoobyDoBop
   class TemplateTest < Test::Unit::TestCase
     def setup
-      @template = Template.new('test')
-      @template[:body1] = 'body1'
-      @template[:body2] = 'body2'
+      @config = Config.instance
+      @uri = VideoURI.parse(@config['/video/url'])
+      @template = Template.new('toot')
+      @template[:video_uri] = @uri
+      @template[:tags] = @config['/hashtags']
     end
 
     def test_to_s
-      @template[:output] = 1
-      assert_equal(@template.to_s, "body1\n")
-      @template[:output] = 2
-      assert_equal(@template.to_s, "body2\n")
+      assert(@template.to_s.present?)
+      assert(@template.to_s.include?(@uri.to_s))
     end
   end
 end
