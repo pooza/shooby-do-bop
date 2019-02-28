@@ -1,11 +1,9 @@
 module ShoobyDoBop
   class TemplateTest < Test::Unit::TestCase
     def setup
-      @config = Config.instance
-      @uri = VideoURI.parse(@config['/video/url'])
+      @crawler = Crawler.all.first
       @template = Template.new('toot')
-      @template[:video_uri] = @uri
-      @template[:tags] = @config['/hashtags']
+      @template[:crawler] = @crawler
     end
 
     def test_to_s

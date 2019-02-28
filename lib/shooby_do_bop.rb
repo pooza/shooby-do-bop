@@ -10,7 +10,6 @@ module ShoobyDoBop
   autoload :Crawler
   autoload :Environment
   autoload :Logger
-  autoload :Mastodon
   autoload :Package
   autoload :Slack
   autoload :Template

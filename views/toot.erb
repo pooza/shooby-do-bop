@@ -1,10 +1,10 @@
 <%# encoding: UTF-8 -%>
 <%= Time.now.strftime('%Y/%m/%d %H:%M') %>
-<%= @params[:video_uri].to_s %>
-現在の再生回数は<%= @params[:video_uri].count.commaize %>回
-<% if @params[:video_uri].remining.positive? -%>
-(あと<%= @params[:video_uri].remining.commaize %>回)
+<%= @params[:crawler].video_uri.to_s %>
+現在の再生回数は<%= @params[:crawler].count.commaize %>回
+<% if @params[:crawler].remining.positive? -%>
+(あと<%= @params[:crawler].remining.commaize %>回)
 <% else -%>
-(再生回数<%= @params[:video_uri].goal.commaize %>回を達成済み)
+(再生回数<%= @params[:crawler].goal.commaize %>回を達成済み)
 <% end -%>
-<%= @params[:tags].map{|word| Mastodon.create_tag(word)}.join(' ') %>
+<%= @params[:crawler].tags.map{|word| Mastodon.create_tag(word)}.join(' ') %>

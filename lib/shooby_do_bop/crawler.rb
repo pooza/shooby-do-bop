@@ -1,39 +1,67 @@
+require 'addressable/uri'
+
 module ShoobyDoBop
   class Crawler
-    def initialize
+    attr_reader :params
+
+    def initialize(params)
+      @params = Config.flatten('', params)
       @config = Config.instance
       @logger = Logger.new
     end
 
     def crawl
-      @logger.info({message: 'start', version: Package.version})
-      response = Mastodon.new(@config['/mastodon/url'], @config['/mastodon/token']).toot(body)
-      raise Ginseng::GatewayError, "status: #{r.code}" if 400 <= response.code
-      @logger.info({message: 'complete', version: Package.version})
+      Slack.new(hook_uri).say(body, :text)
+      @logger.info(params)
     rescue => e
       e = Ginseng::Error.create(e)
       Slack.broadcast(e.to_h)
-      @logger.error({class: e.class, message: e.message, version: Package.version})
-      exit 1
+      @logger.error(e.to_h)
     end
 
     def body
       template = Template.new('toot')
-      template[:video_uri] = video_uri
-      template[:tags] = @config['/hashtags']
+      template[:crawler] = self
       return template.to_s
     end
 
     def video_uri
-      @video_uri ||= VideoURI.parse(@config['/video/url'])
+      @video_uri ||= VideoURI.parse(@params['/video/url'])
       return @video_uri
     end
-  end
-end
 
-# https://qiita.com/acairojuni/items/1055c2f27cbd99e67fc2
-class Integer
-  def commaize
-    return to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,')
+    def hook_uri
+      @hook_uri ||= Addressable::URI.parse(@params['/hook'])
+      return @hook_uri
+    end
+
+    def goal
+      return @params['/goal'] || 10_000_000
+    end
+
+    def count
+      return video_uri.count
+    end
+
+    def remining
+      return goal - count
+    end
+
+    def tags
+      return @params['/tags'] || []
+    end
+
+    def self.crawl_all
+      all do |crawler|
+        crawler.crawl
+      end
+    end
+
+    def self.all
+      return enum_for(__method__) unless block_given?
+      Config.instance['/entries'].each do |entry|
+        yield Crawler.new(entry)
+      end
+    end
   end
 end
