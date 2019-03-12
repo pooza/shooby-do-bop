@@ -9,6 +9,7 @@ module ShoobyDoBop
   autoload :Config
   autoload :Crawler
   autoload :Environment
+  autoload :HTTP
   autoload :Logger
   autoload :Package
   autoload :Slack

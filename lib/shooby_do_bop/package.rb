@@ -16,6 +16,10 @@ module ShoobyDoBop
       return 'ShoobyDoBop::Logger'
     end
 
+    def http_class
+      return 'ShoobyDoBop::HTTP'
+    end
+
     def self.name
       return 'shooby-do-bop'
     end
