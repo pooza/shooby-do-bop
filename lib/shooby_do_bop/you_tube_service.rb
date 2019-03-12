@@ -1,9 +1,8 @@
-require 'httparty'
-
 module ShoobyDoBop
   class YouTubeService
     def initialize
       @config = Config.instance
+      @http = HTTP.new
     end
 
     def lookup_video(id)
@@ -13,9 +12,7 @@ module ShoobyDoBop
         'key' => api_key,
         'id' => id,
       }
-      response = HTTParty.get(uri, {
-        headers: {'User-Agent' => Package.user_agent},
-      }).to_h
+      response = @http.get(uri).to_h
       return nil unless response['items'].present?
       return response['items'].first
     rescue => e
