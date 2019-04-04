@@ -1,23 +1,31 @@
 module ShoobyDoBop
   module Package
+    def module_name
+      return 'ShoobyDoBop'
+    end
+
     def environment_class
-      return 'ShoobyDoBop::Environment'
+      return "#{module_name}::Environment"
     end
 
     def package_class
-      return 'ShoobyDoBop::Package'
+      return "#{module_name}::Package"
     end
 
     def config_class
-      return 'ShoobyDoBop::Config'
+      return "#{module_name}::Config"
     end
 
     def logger_class
-      return 'ShoobyDoBop::Logger'
+      return "#{module_name}::Logger"
     end
 
     def http_class
-      return 'ShoobyDoBop::HTTP'
+      return "#{module_name}::HTTP"
+    end
+
+    def you_tube_service_class
+      return "#{module_name}::YouTubeService"
     end
 
     def self.name
