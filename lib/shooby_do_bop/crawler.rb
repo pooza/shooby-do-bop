@@ -1,5 +1,3 @@
-require 'addressable/uri'
-
 module ShoobyDoBop
   class Crawler
     attr_reader :params
@@ -32,7 +30,7 @@ module ShoobyDoBop
     end
 
     def hook_uri
-      @hook_uri ||= Addressable::URI.parse(@params['/hook'])
+      @hook_uri ||= Ginseng::URI.parse(@params['/hook'])
       return @hook_uri
     end
 
