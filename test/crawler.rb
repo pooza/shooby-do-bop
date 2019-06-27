@@ -14,7 +14,7 @@ module ShoobyDoBop
 
     def test_hook_uri
       Crawler.all do |crawler|
-        assert(crawler.hook_uri.is_a?(Addressable::URI))
+        assert(crawler.hook_uri.is_a?(Ginseng::URI))
       end
     end
 
