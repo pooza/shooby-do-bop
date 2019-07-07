@@ -7,6 +7,7 @@ module ShoobyDoBop
     end
 
     def test_to_s
+      return unless Environment.ci?
       assert(@template.to_s.present?)
       assert(@template.to_s.include?(@uri.to_s))
     end

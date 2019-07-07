@@ -47,18 +47,21 @@ module ShoobyDoBop
     end
 
     def test_count
+      return unless Environment.ci?
       Crawler.all do |crawler|
         assert(crawler.count.is_a?(Integer))
       end
     end
 
     def test_remining
+      return unless Environment.ci?
       Crawler.all do |crawler|
         assert(crawler.remining.is_a?(Integer))
       end
     end
 
     def test_rtags
+      return unless Environment.ci?
       Crawler.all do |crawler|
         assert(crawler.tags.is_a?(Array))
       end
