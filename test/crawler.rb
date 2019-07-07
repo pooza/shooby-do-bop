@@ -5,12 +5,16 @@ module ShoobyDoBop
       return unless Environment.ci?
       @config['/entries'] = [
         {
-          video: 'https://www.youtube.com/watch?v=uFfsTeExwbQ',
+          video: {
+            url: 'https://www.youtube.com/watch?v=uFfsTeExwbQ',
+          },
           hook: 'https://st.mstdn.b-shock.org/mulukhiya/webhook/00000',
           goal: 20_000_000,
         },
         {
-          video: 'https://www.youtube.com/watch?v=q0Ib86qUodw',
+          video: {
+            url: 'https://www.youtube.com/watch?v=q0Ib86qUodw',
+          },
           hook: 'https://st.mstdn.b-shock.org/mulukhiya/webhook/11111',
           goal: 10_000_000,
         },
