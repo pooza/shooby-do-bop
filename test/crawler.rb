@@ -1,5 +1,22 @@
 module ShoobyDoBop
   class CrawlerTest < Test::Unit::TestCase
+    def setup
+      @config = Config.instance
+      return unless Environment.ci?
+      @config['/entries'] = [
+        {
+          video: 'https://www.youtube.com/watch?v=uFfsTeExwbQ',
+          hook: 'https://st.mstdn.b-shock.org/mulukhiya/webhook/00000',
+          goal: 20_000_000,
+        },
+        {
+          video: 'https://www.youtube.com/watch?v=q0Ib86qUodw',
+          hook: 'https://st.mstdn.b-shock.org/mulukhiya/webhook/11111',
+          goal: 10_000_000,
+        },
+      ]
+    end
+
     def test_all
       Crawler.all do |crawler|
         assert(crawler.is_a?(Crawler))
@@ -13,6 +30,7 @@ module ShoobyDoBop
     end
 
     def test_hook_uri
+      return unless Environment.ci?
       Crawler.all do |crawler|
         assert(crawler.hook_uri.is_a?(Ginseng::URI))
       end
