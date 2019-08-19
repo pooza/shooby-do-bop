@@ -5,9 +5,6 @@ ENV['BUNDLE_GEMFILE'] ||= File.join(dir, 'Gemfile')
 require 'bundler/setup'
 require 'shooby_do_bop'
 
-desc 'test all'
-task test: ['shooby:test']
-
 [:crawl].each do |action|
   desc "alias of shooby:#{action}"
   task action => "shooby:#{action}"
