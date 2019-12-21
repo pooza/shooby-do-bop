@@ -5,7 +5,7 @@ module ShoobyDoBop
     end
 
     def self.dir
-      return File.expand_path('../..', __dir__)
+      return ShoobyDoBop.dir
     end
   end
 end

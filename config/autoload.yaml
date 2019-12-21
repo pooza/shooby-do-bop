@@ -1,0 +1,4 @@
+inflections:
+  http: HTTP
+  video_uri: VideoURI
+dirs: []
