@@ -10,6 +10,6 @@ require 'shooby_do_bop'
   task action => "shooby:#{action}"
 end
 
-Dir.glob(File.join(ShoobyDoBop::Environment.dir, 'lib/task/*.rb')).each do |f|
+Dir.glob(File.join(ShoobyDoBop::Environment.dir, 'lib/task/*.rb')).sort.each do |f|
   require f
 end
