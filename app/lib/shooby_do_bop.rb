@@ -1,8 +1,4 @@
-require 'active_support'
-require 'active_support/core_ext'
-require 'zeitwerk'
 require 'ginseng'
-require 'yaml'
 
 module ShoobyDoBop
   def self.dir
@@ -17,8 +13,8 @@ module ShoobyDoBop
     config['dirs'].each do |d|
       loader.push_dir(File.join(dir, 'app', d))
     end
-    loader.setup
+    return loader
   end
 end
 
-ShoobyDoBop.loader
+ShoobyDoBop.loader.setup
