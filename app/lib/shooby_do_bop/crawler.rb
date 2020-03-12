@@ -3,7 +3,7 @@ module ShoobyDoBop
     attr_reader :params
 
     def initialize(params)
-      @params = params.flatten
+      @params = params.key_flatten
       @config = Config.instance
       @logger = Logger.new
     end
