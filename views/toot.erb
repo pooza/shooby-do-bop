@@ -7,4 +7,4 @@
 <% else -%>
 (再生回数<%= @params[:crawler].goal.commaize %>回を達成済み)
 <% end -%>
-<%= @params[:crawler].tags.map{|word| Mastodon.create_tag(word)}.join(' ') %>
+<%= @params[:crawler].tags.map{|word| Ginseng::Fediverse::MastodonService.create_tag(word)}.join(' ') %>

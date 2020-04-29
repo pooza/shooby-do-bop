@@ -1,4 +1,5 @@
 require 'ginseng'
+require 'ginseng/fediverse'
 
 module ShoobyDoBop
   def self.dir
@@ -12,6 +13,12 @@ module ShoobyDoBop
     loader.push_dir(File.join(dir, 'app/lib'))
     loader.collapse('app/lib/shooby_do_bop/*')
     return loader
+  end
+
+  def self.load_tasks
+    Dir.glob(File.join(dir, 'app/task/*.rb')).sort.each do |f|
+      require f
+    end
   end
 end
 

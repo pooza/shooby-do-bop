@@ -5,6 +5,4 @@ ENV['BUNDLE_GEMFILE'] ||= File.join(dir, 'Gemfile')
 require 'bundler/setup'
 require 'shooby_do_bop'
 
-Dir.glob(File.join(ShoobyDoBop::Environment.dir, 'app/task/*.rb')).sort.each do |f|
-  require f
-end
+ShoobyDoBop.load_tasks
