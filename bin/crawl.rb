@@ -8,5 +8,16 @@ ENV['BUNDLE_GEMFILE'] ||= File.join(dir, 'Gemfile')
 
 require 'bundler/setup'
 require 'shooby_do_bop'
+require 'optparse'
 
-ShoobyDoBop::Crawler.crawl_all
+begin
+  options = ARGV.getopts('', 'entry:')
+  name = options['entry']
+  unless crawler = ShoobyDoBop::Crawler.create(name)
+    raise "crawler '#{name}' undefined."
+  end
+  crawler.exec
+rescue => e
+  warn e.message
+  exit 1
+end
