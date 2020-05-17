@@ -8,11 +8,7 @@ module ShoobyDoBop
     end
 
     def crawl
-      Slack.new(hook_uri).say(body, :text)
-    rescue => e
-      e = Ginseng::Error.create(e)
-      e.package = Package.full_name
-      Slack.broadcast(e.to_h)
+      puts body
     end
 
     def body
@@ -26,11 +22,6 @@ module ShoobyDoBop
       return @video_uri
     end
 
-    def hook_uri
-      @hook_uri ||= Ginseng::URI.parse(@params['/hook'])
-      return @hook_uri
-    end
-
     def goal
       return @params['/goal'] || 10_000_000
     end
@@ -41,10 +32,6 @@ module ShoobyDoBop
 
     def remining
       return goal - count
-    end
-
-    def tags
-      return @params['/tags'] || []
     end
 
     def self.crawl_all
