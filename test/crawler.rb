@@ -51,12 +51,9 @@ module ShoobyDoBop
       end
     end
 
-
     def test_exec
       return if Environment.ci?
-      Crawler.all do |crawler|
-        crawler.exec
-      end
+      Crawler.all(&:exec)
     end
   end
 end
