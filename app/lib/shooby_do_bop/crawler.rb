@@ -1,21 +1,7 @@
 module ShoobyDoBop
   class Crawler
-    attr_reader :params
-
-    def initialize(params)
-      @params = params.key_flatten
-      @config = Config.instance
-      @logger = Logger.new
-    end
-
-    def crawl
-      Slack.new(hook_uri).say(body, :text)
-      @logger.info(params)
-    rescue => e
-      e = Ginseng::Error.create(e)
-      e.package = Package.full_name
-      Slack.broadcast(e.to_h)
-      @logger.error(e.to_h)
+    def exec
+      puts body
     end
 
     def body
@@ -24,14 +10,13 @@ module ShoobyDoBop
       return template.to_s
     end
 
-    def video_uri
-      @video_uri ||= VideoURI.parse(@params['/video/url'])
-      return @video_uri
+    def uri
+      @uri ||= VideoURI.parse(@params['/video/url'])
+      return @uri
     end
 
-    def hook_uri
-      @hook_uri ||= Ginseng::URI.parse(@params['/hook'])
-      return @hook_uri
+    def key
+      return @params['/key']
     end
 
     def goal
@@ -39,26 +24,32 @@ module ShoobyDoBop
     end
 
     def count
-      return video_uri.count
+      return uri.count
     end
 
     def remining
       return goal - count
     end
 
-    def tags
-      return @params['/tags'] || []
-    end
-
-    def self.crawl_all
-      all(&:crawl)
+    def self.create(key)
+      all do |crawler|
+        return crawler if key == crawler.key
+      end
+      return nil
     end
 
     def self.all
       return enum_for(__method__) unless block_given?
-      Config.instance['/entries'].each do |entry|
-        yield Crawler.new(entry)
+      Config.instance['/entries'].each do |v|
+        yield Crawler.new(v)
       end
+    end
+
+    private
+
+    def initialize(params)
+      @params = params.key_flatten
+      @config = Config.instance
     end
   end
 end

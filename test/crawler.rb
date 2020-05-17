@@ -8,14 +8,12 @@ module ShoobyDoBop
           video: {
             url: 'https://www.youtube.com/watch?v=uFfsTeExwbQ',
           },
-          hook: 'https://st.mstdn.b-shock.org/mulukhiya/webhook/00000',
           goal: 20_000_000,
         },
         {
           video: {
             url: 'https://www.youtube.com/watch?v=q0Ib86qUodw',
           },
-          hook: 'https://st.mstdn.b-shock.org/mulukhiya/webhook/11111',
           goal: 10_000_000,
         },
       ]
@@ -27,16 +25,9 @@ module ShoobyDoBop
       end
     end
 
-    def test_video_uri
+    def test_uri
       Crawler.all do |crawler|
-        assert(crawler.video_uri.is_a?(VideoURI))
-      end
-    end
-
-    def test_hook_uri
-      return if Environment.ci?
-      Crawler.all do |crawler|
-        assert(crawler.hook_uri.is_a?(Ginseng::URI))
+        assert(crawler.uri.is_a?(VideoURI))
       end
     end
 
@@ -60,11 +51,9 @@ module ShoobyDoBop
       end
     end
 
-    def test_rtags
+    def test_exec
       return if Environment.ci?
-      Crawler.all do |crawler|
-        assert(crawler.tags.is_a?(Array))
-      end
+      Crawler.all(&:exec)
     end
   end
 end
