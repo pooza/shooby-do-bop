@@ -5,17 +5,14 @@ module ShoobyDoBop
     def initialize(params)
       @params = params.key_flatten
       @config = Config.instance
-      @logger = Logger.new
     end
 
     def crawl
       Slack.new(hook_uri).say(body, :text)
-      @logger.info(params)
     rescue => e
       e = Ginseng::Error.create(e)
       e.package = Package.full_name
       Slack.broadcast(e.to_h)
-      @logger.error(e.to_h)
     end
 
     def body
