@@ -2,7 +2,6 @@ module ShoobyDoBop
   class CrawlerTest < Test::Unit::TestCase
     def setup
       @config = Config.instance
-      return unless Environment.ci?
       @config['/entries'] = [
         {
           video: {

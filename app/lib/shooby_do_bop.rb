@@ -1,5 +1,5 @@
 require 'ginseng'
-require 'ginseng/fediverse'
+require 'ginseng/you_tube'
 
 module ShoobyDoBop
   def self.dir

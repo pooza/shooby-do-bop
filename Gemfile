@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.7.1'
 gem 'ginseng-core', github: 'pooza/ginseng-core'
-gem 'ginseng-fediverse', github: 'pooza/ginseng-fediverse'
+gem 'ginseng-youtube', github: 'pooza/ginseng-youtube'
 
 group :development do
   gem 'rubocop'

@@ -1,10 +1,9 @@
 package:
-  version: 2.0.0
+  version: 2.0.1
   url: https://github.com/pooza/shooby-do-bop
   authors:
     - Tatsuya Koishi
   email:
     - tkoishi@b-shock.co.jp
 youtube:
-  urls:
-    videos: https://www.googleapis.com/youtube/v3/videos
+  url: https://www.googleapis.com/

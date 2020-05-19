@@ -1,5 +1,5 @@
 module ShoobyDoBop
-  class YouTubeService < Ginseng::YouTubeService
+  class YouTubeService < Ginseng::YouTube::Service
     include Package
   end
 end
