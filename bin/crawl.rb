@@ -12,7 +12,7 @@ require 'optparse'
 
 begin
   options = ARGV.getopts('', 'entry:')
-  name = options['entry']
+  raise 'crawler entry undefined.' unless name = options['entry']
   unless crawler = ShoobyDoBop::Crawler.create(name)
     raise "crawler '#{name}' undefined."
   end
