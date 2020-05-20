@@ -1,5 +1,4 @@
 require 'ginseng'
-require 'ginseng/you_tube'
 
 module ShoobyDoBop
   def self.dir
@@ -23,3 +22,4 @@ module ShoobyDoBop
 end
 
 ShoobyDoBop.loader.setup
+Bundler.require
