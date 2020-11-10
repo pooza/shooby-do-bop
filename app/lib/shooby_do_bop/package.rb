@@ -13,7 +13,7 @@ module ShoobyDoBop
     end
 
     def logger_class
-      return Logger
+      return Ginseng::Logger
     end
 
     def http_class
