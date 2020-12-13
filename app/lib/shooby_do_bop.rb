@@ -1,3 +1,4 @@
+require 'shooby_do_bop/refines'
 require 'ginseng'
 
 module ShoobyDoBop
