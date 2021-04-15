@@ -1,7 +1,9 @@
+require 'bundler/setup'
 require 'shooby_do_bop/refines'
-require 'ginseng'
 
 module ShoobyDoBop
+  using Refines
+
   def self.dir
     return File.expand_path('../..', __dir__)
   end
@@ -16,11 +18,11 @@ module ShoobyDoBop
   end
 
   def self.load_tasks
-    Dir.glob(File.join(dir, 'app/task/*.rb')).sort.each do |f|
+    Dir.glob(File.join(dir, 'app/task/*.rb')).each do |f|
       require f
     end
   end
-end
 
-ShoobyDoBop.loader.setup
-Bundler.require
+  Bundler.require
+  loader.setup
+end

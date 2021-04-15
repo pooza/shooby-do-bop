@@ -1,8 +1,6 @@
+require 'pp'
+
 desc 'test all'
 task :test do
-  ENV['TEST'] = ShoobyDoBop::Package.name
-  require 'test/unit'
-  Dir.glob(File.join(ShoobyDoBop::Environment.dir, 'test/*.rb')).sort.each do |t|
-    require t
-  end
+  ShoobyDoBop::TestCase.load
 end
