@@ -1,36 +1,9 @@
 module ShoobyDoBop
   class TestCase < Ginseng::TestCase
     include Package
-    include SNSMethods
-
-    def teardown
-      config.reload
-    end
-
-    def account
-      @account ||= account_class.test_account
-      return @account
-    rescue => e
-      logger.error(error: e)
-      return nil
-    end
-
-    def test_token
-      return account_class.test_token
-    rescue => e
-      logger.error(error: e)
-      return nil
-    end
-
-    def handler?
-      return false if @handler.nil?
-      return false if @handler.disable?
-      return true
-    end
 
     def self.load
       ENV['TEST'] = Package.full_name
-      Sidekiq::Testing.fake!
       names.each do |name|
         puts "+ case: #{name}" if Environment.test?
         require File.join(dir, "#{name}.rb")

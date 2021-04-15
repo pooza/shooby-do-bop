@@ -1,5 +1,5 @@
 module ShoobyDoBop
-  class CrawlerTest < Test::Unit::TestCase
+  class CrawlerTest < TestCase
     def setup
       @config = Config.instance
       @config['/entries'] = [
