@@ -1,6 +1,8 @@
-require 'pp'
+module ShoobyDoBop
+  extend Rake::DSL
 
-desc 'test all'
-task :test do
-  ShoobyDoBop::TestCase.load
+  desc 'test all'
+  task :test do
+    TestCase.load
+  end
 end

@@ -1,16 +1,8 @@
 #!/usr/bin/env ruby
+$LOAD_PATH.unshift(File.join(File.expand_path('..', __dir__), 'app/lib'))
 
-path = File.expand_path(__FILE__)
-path = File.expand_path(File.readlink(path)) while File.symlink?(path)
-dir = File.expand_path('../..', path)
-$LOAD_PATH.unshift(File.join(dir, 'app/lib'))
-ENV['BUNDLE_GEMFILE'] = File.join(dir, 'Gemfile')
-
-require 'bundler/setup'
 require 'shooby_do_bop'
-require 'optparse'
-
-begin
+module ShoobyDoBop
   options = ARGV.getopts('', 'entry:')
   raise 'crawler entry undefined.' unless name = options['entry']
   unless crawler = ShoobyDoBop::Crawler.create(name)
