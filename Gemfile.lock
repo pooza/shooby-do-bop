@@ -160,6 +160,7 @@ PLATFORMS
 DEPENDENCIES
   ginseng-core!
   ginseng-youtube!
+  optparse
   ricecream
   rubocop
   rubocop-minitest
