@@ -6,7 +6,9 @@ gem 'ginseng-youtube', github: 'pooza/ginseng-youtube', require: 'ginseng/you_tu
 group :development do
   gem 'ricecream'
   gem 'rubocop'
+  gem 'rubocop-minitest'
   gem 'rubocop-performance'
   gem 'rubocop-rake'
+  gem 'timecop'
   gem 'test-unit'
 end
