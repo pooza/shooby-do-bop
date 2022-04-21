@@ -1,5 +1,7 @@
 module ShoobyDoBop
   class Crawler
+    include Package
+
     def exec
       puts body
     end
@@ -32,15 +34,12 @@ module ShoobyDoBop
     end
 
     def self.create(key)
-      all do |crawler|
-        return crawler if key == crawler.key
-      end
-      return nil
+      return all.find {|crawler| key == crawler.key}
     end
 
     def self.all
       return enum_for(__method__) unless block_given?
-      Config.instance['/entries'].each do |v|
+      config['/entries'].each do |v|
         yield Crawler.new(v)
       end
     end
@@ -49,7 +48,6 @@ module ShoobyDoBop
 
     def initialize(params)
       @params = params.key_flatten
-      @config = Config.instance
     end
   end
 end
