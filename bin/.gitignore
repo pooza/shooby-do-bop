@@ -1,0 +1,3 @@
+*.rb
+!shooby.rb
+!test.rb

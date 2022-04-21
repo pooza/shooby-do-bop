@@ -12,8 +12,16 @@ module ShoobyDoBop
       return Config
     end
 
+    def config
+      return Config.instance
+    end
+
     def logger_class
       return Ginseng::Logger
+    end
+
+    def logger
+      return Ginseng::Logger.new
     end
 
     def http_class
@@ -42,6 +50,20 @@ module ShoobyDoBop
 
     def self.user_agent
       return "#{name}/#{version} (#{url})"
+    end
+
+    def self.included(base)
+      base.extend(Methods)
+    end
+
+    module Methods
+      def config
+        return Config.instance
+      end
+
+      def logger
+        return Ginseng::Logger.new
+      end
     end
   end
 end
