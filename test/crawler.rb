@@ -38,6 +38,7 @@ module ShoobyDoBop
 
     def test_count
       return if Environment.ci?
+
       Crawler.all do |crawler|
         assert(crawler.count.is_a?(Integer))
       end
@@ -45,6 +46,7 @@ module ShoobyDoBop
 
     def test_remining
       return if Environment.ci?
+
       Crawler.all do |crawler|
         assert(crawler.remining.is_a?(Integer))
       end
