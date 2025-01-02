@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '~>3.3.0'
+ruby '~>3.4.0'
 gem 'ginseng-core', github: 'pooza/ginseng-core', require: 'ginseng'
 gem 'ginseng-youtube', github: 'pooza/ginseng-youtube', require: 'ginseng/you_tube'
 gem 'optparse'

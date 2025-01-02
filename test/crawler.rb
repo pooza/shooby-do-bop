@@ -20,40 +20,40 @@ module ShoobyDoBop
 
     def test_all
       Crawler.all do |crawler|
-        assert(crawler.is_a?(Crawler))
+        assert_kind_of(Crawler, crawler)
       end
     end
 
     def test_uri
       Crawler.all do |crawler|
-        assert(crawler.uri.is_a?(VideoURI))
+        assert_kind_of(VideoURI, crawler.uri)
       end
     end
 
     def test_goal
       Crawler.all do |crawler|
-        assert(crawler.goal.is_a?(Integer))
+        assert_kind_of(Integer, crawler.goal)
       end
     end
 
     def test_count
-      return if Environment.ci?
+      skip if Environment.ci?
 
       Crawler.all do |crawler|
-        assert(crawler.count.is_a?(Integer))
+        assert_kind_of(Integer, crawler.count)
       end
     end
 
     def test_remining
-      return if Environment.ci?
+      skip if Environment.ci?
 
       Crawler.all do |crawler|
-        assert(crawler.remining.is_a?(Integer))
+        assert_kind_of(Integer, crawler.remining)
       end
     end
 
     def test_exec
-      return if Environment.ci?
+      skip if Environment.ci?
       Crawler.all(&:exec)
     end
   end
