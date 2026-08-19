@@ -37,7 +37,7 @@ module ShoobyDoBop
     end
 
     def test_count
-      skip if Environment.ci?
+      return if Environment.ci?
 
       Crawler.all do |crawler|
         assert_kind_of(Integer, crawler.count)
@@ -45,7 +45,7 @@ module ShoobyDoBop
     end
 
     def test_remining
-      skip if Environment.ci?
+      return if Environment.ci?
 
       Crawler.all do |crawler|
         assert_kind_of(Integer, crawler.remining)
@@ -53,7 +53,7 @@ module ShoobyDoBop
     end
 
     def test_exec
-      skip if Environment.ci?
+      return if Environment.ci?
       Crawler.all(&:exec)
     end
   end
