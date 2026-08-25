@@ -32,6 +32,17 @@ GIT
       zlib
 
 GIT
+  remote: https://github.com/pooza/ginseng-style.git
+  revision: 0c9ddb19d902d675504fc2d6ed258e590901073f
+  tag: v1.1.4
+  specs:
+    ginseng-style (1.1.4)
+      rubocop
+      rubocop-minitest
+      rubocop-performance
+      rubocop-rake
+
+GIT
   remote: https://github.com/pooza/ginseng-youtube.git
   revision: b27af86e1a9e60bf254fb06ebebb771575d6ffa1
   specs:
@@ -181,13 +192,10 @@ PLATFORMS
 
 DEPENDENCIES
   ginseng-core!
+  ginseng-style!
   ginseng-youtube!
   optparse
   ricecream
-  rubocop
-  rubocop-minitest
-  rubocop-performance
-  rubocop-rake
   test-unit
   timecop
 
