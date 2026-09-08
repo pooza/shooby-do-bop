@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '>= 3.4', '< 5.0'
-gem 'ginseng-core', github: 'pooza/ginseng-core', require: 'ginseng'
-gem 'ginseng-youtube', github: 'pooza/ginseng-youtube', require: 'ginseng/you_tube'
+gem 'ginseng-core', github: 'pooza/ginseng-core', tag: 'v1.23.5', require: 'ginseng'
+gem 'ginseng-youtube', github: 'pooza/ginseng-youtube', tag: 'v3.0.1', require: 'ginseng/you_tube'
 gem 'optparse'
 
 group :development do

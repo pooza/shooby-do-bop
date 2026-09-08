@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/pooza/ginseng-core.git
   revision: d53a18b5c74d13af6b78b6a7ae6e0c6a7a0caa88
+  tag: v1.23.5
   specs:
     ginseng-core (1.23.5)
       activesupport (>= 8.1.2.1)
@@ -44,7 +45,8 @@ GIT
 
 GIT
   remote: https://github.com/pooza/ginseng-youtube.git
-  revision: 71415a45d291f7a823e1b51c397e4651d9625237
+  revision: 74b9f344df15ab8a2f6f09808781f97e6ad872a5
+  tag: v3.0.1
   specs:
     ginseng-youtube (3.0.1)
 
