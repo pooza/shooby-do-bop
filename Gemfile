@@ -5,7 +5,7 @@ gem 'ginseng-youtube', github: 'pooza/ginseng-youtube', require: 'ginseng/you_tu
 gem 'optparse'
 
 group :development do
-  gem 'ginseng-style', github: 'pooza/ginseng-style', tag: 'v1.1.12', require: false
+  gem 'ginseng-style', github: 'pooza/ginseng-style', tag: 'v1.1.13', require: false
   gem 'ricecream'
   gem 'test-unit'
   gem 'timecop'
