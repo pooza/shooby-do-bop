@@ -44,9 +44,9 @@ GIT
 
 GIT
   remote: https://github.com/pooza/ginseng-youtube.git
-  revision: e166b3faded9412bd9776935fc02cb9dc8212d6b
+  revision: 49f2bb19f376d131da95f921861ade78dc829b5f
   specs:
-    ginseng-youtube (4.0.0)
+    ginseng-youtube (4.0.1)
       ginseng-core (>= 1.23.1)
 
 GEM
